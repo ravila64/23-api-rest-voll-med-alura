@@ -1,0 +1,30 @@
+* install plugin lombok o actalizarlo
+* ir settings, build execition, compiler, rebuild,
+* next advanced settings, marcar allow aiuto make...
+
+* next file, settings, build compiler, submenu annotation processors
+* check enable annotation processing
+
+* reconstruir, proyecto, con build, rebuild proyect,
+* limpiar cache,  file, invalidate caches, click invalidate and restart
+
+si no funciona, quitar.
+Es recomendable eliminar la siguiente configuración del maven-compiler-plugin:
+'''
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-compiler-plugin</artifactId>
+    <configuration>
+        <annotationProcessorPaths>
+            <path>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+            </path>
+        </annotationProcessorPaths>
+    </configuration>
+</plugin>
+'''
+Al eliminarla, se permite que el IDE y Maven gestionen la dependencia de Lombok de forma automática.
+**
+
+
