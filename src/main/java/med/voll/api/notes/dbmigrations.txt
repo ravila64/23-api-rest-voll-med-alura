@@ -1,0 +1,2 @@
+// Este archivo en resources es para que tome el script
+// flyway
