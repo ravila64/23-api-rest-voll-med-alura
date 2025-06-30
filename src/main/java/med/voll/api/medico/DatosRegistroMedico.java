@@ -10,6 +10,7 @@ import med.voll.api.direccion.DatosDireccion;
 public record DatosRegistroMedico(
       @NotBlank String nombre,
       @NotBlank @Email String email,
+      @NotBlank String telefono,
       @NotBlank @Pattern(regexp ="\\d{6,10}") String documento,
       @NotNull Especialidad especialidad,
       @NotNull @Valid DatosDireccion direccion
@@ -19,6 +20,7 @@ public record DatosRegistroMedico(
       return "DatosRegistroMedico{" +
             "Nombre='" + nombre +"\'"+
             ", email='" + email + "\'"+
+            ", telefono='" + telefono + "\'"+
             ", documento='" + documento + "\'"+
             ", especialidad=" + especialidad + '\n' +
             "Direccion=" + direccion +
