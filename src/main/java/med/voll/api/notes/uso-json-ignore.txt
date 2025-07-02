@@ -1,0 +1,12 @@
+Uso de la anotación @JsonIgnore
+En esta situación, podríamos usar la anotación @JsonIgnore, que nos ayuda a ignorar ciertas propiedades de una clase Java cuando se serializa en un objeto JSON.
+
+Su uso consiste en agregar la anotación a los atributos que queremos ignorar cuando se genera el JSON. Por ejemplo, supongamos que tenemos una entidad JPA 'Empleado', en la que queremos ignorar el atributo 'salario':
+
+public class Empleado{
+
+}
+
+En el ejemplo anterior, el atributo 'salario' de la clase 'Empleado' no se mostrará en las respuestas JSON y el problema estaría resuelto.
+
+Sin embargo, puede haber algún otro endpoint de la API en el que necesitemos enviar el salario de los empleados en el JSON, en cuyo caso tendríamos problemas, ya que con la anotación @JsonIgnore tal atributo nunca se enviará en el JSON, y al eliminar la anotación se enviará el atributo siempre. Por lo tanto, perdemos la flexibilidad de controlar cuándo se deben enviar ciertos atributos en el JSON y cuándo no.

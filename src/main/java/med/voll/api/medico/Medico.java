@@ -1,11 +1,15 @@
 package med.voll.api.medico;
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import med.voll.api.direccion.Direccion;
+
+import java.sql.Array;
+
 // crear la tabla medicos
 @Table(name="medicos")
 @Entity(name="Medico")
@@ -39,5 +43,31 @@ public class Medico {
       this.documento = datos.documento();
       this.especialidad = datos.especialidad();
       this.direccion = new Direccion(datos.direccion());
+   }
+
+   public void actualizarDatos(@Valid DatosActualizarMedico datos) {
+      boolean[] actualizo = {false, false, false};
+      String[] campos = {"nombre","telefono","direccion"};
+      if(datos.nombre()!=null){
+         this.nombre = datos.nombre();
+         actualizo[0]=true;
+      }
+
+      if(datos.telefono()!=null){
+         this.telefono = datos.telefono();
+         actualizo[1]=true;
+      }
+
+      if(datos.direccion()!=null){
+         this.direccion.actualizarDireccion(datos.direccion());
+         actualizo[2]=true;
+      }
+      System.out.print("Actualizo medico, campos: ");
+      for (int i = 0; i < actualizo.length ; i++) {
+         if(actualizo[i]){
+            System.out.println(campos[i]);
+         }
+      }
+
    }
 }
