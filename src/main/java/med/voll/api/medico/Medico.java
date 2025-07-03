@@ -64,12 +64,14 @@ public class Medico {
          this.direccion.actualizarDireccion(datos.direccion());
          actualizo[2]=true;
       }
-      System.out.print("Actualizo de medicos, campos: ");
+
+      String str="";
       for (int i = 0; i < actualizo.length ; i++) {
          if(actualizo[i]){
-            System.out.println(campos[i]);
+            str=str+campos[i]+" - ";
          }
       }
+      System.out.println("Actualizo campos en medicos "+str);
 
    }
 

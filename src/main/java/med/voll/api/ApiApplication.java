@@ -12,7 +12,7 @@ public class ApiApplication implements CommandLineRunner {
    }
    //@Override
    public void run(String... args) throws Exception {
-      System.out.println("welcome app with spring boot + lombok + mysql + flyway");
+      System.out.println("welcome app with spring boot 3 + lombok + mysql + flyway");
    }
 
 }

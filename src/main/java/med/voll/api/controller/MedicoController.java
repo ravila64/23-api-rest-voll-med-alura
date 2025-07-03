@@ -54,7 +54,7 @@ public class MedicoController {
    @DeleteMapping("/{id}")
    public void eliminar(@PathVariable Long id){
       var medico = repository.getReferenceById(id);
-      medico.eliminar(); // elimina un medico fisico de la bd
+      medico.eliminar(); // elimina un medico forma logica BD
       System.out.println("Medico no activo en base de datos");
    }
 }
