@@ -23,6 +23,7 @@ public class Medico {
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Long id;
+   private boolean activo;
    private String nombre;
    private String email;
    private String telefono;
@@ -37,6 +38,7 @@ public class Medico {
 
    public Medico(DatosRegistroMedico datos) {
       this.id = null;
+      this.activo=true;
       this.nombre = datos.nombre();
       this.email = datos.email();
       this.telefono = datos.telefono();
@@ -62,7 +64,7 @@ public class Medico {
          this.direccion.actualizarDireccion(datos.direccion());
          actualizo[2]=true;
       }
-      System.out.print("Actualizo medico, campos: ");
+      System.out.print("Actualizo de medicos, campos: ");
       for (int i = 0; i < actualizo.length ; i++) {
          if(actualizo[i]){
             System.out.println(campos[i]);
@@ -70,4 +72,9 @@ public class Medico {
       }
 
    }
+
+   public void eliminar() {
+      this.activo = false;
+   }
+
 }

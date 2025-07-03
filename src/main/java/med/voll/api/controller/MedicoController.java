@@ -29,7 +29,8 @@ public class MedicoController {
 
    @GetMapping
    public Page<DatosListaMedico> listar(@PageableDefault(size=10,sort = "nombre") Pageable pageable){
-      return repository.findAll(pageable).map(DatosListaMedico::new);
+      return repository.findAllByActivoTrue(pageable).map(DatosListaMedico::new);
+      //return repository.findAll(pageable).map(DatosListaMedico::new);
    }
    //return repository.findAll(pageable).stream().map(DatosListaMedico::new).toList();
    //cuando se maneja List()
@@ -41,5 +42,19 @@ public class MedicoController {
       medico.actualizarDatos(datos); // se ejecuta dentro de una transaccion y no necesita save
       System.out.println("Medico actualizado \n"+datos);
    }
-   
+
+// se utiliza si es eliminado fisico
+//   @Transactional
+//   @DeleteMapping("/{id}")
+//   public void eliminar(@PathVariable Long id){
+//      repository.deleteById(id); // elimina un medico fisico de la bd
+//   }
+
+   @Transactional
+   @DeleteMapping("/{id}")
+   public void eliminar(@PathVariable Long id){
+      var medico = repository.getReferenceById(id);
+      medico.eliminar(); // elimina un medico fisico de la bd
+      System.out.println("Medico no activo en base de datos");
+   }
 }
